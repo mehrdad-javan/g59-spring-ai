@@ -1,3 +1,16 @@
 spring:
   application:
     name: g59-spring-ai
+
+  ai:
+    retry:
+      max-attempts: 1
+
+    openai:
+      api-key: ${OPENAI_API_KEY}
+      # base-url: https://api.openai.com/
+      chat:
+        options:
+          model: gpt-4o
+          max-tokens: 1024
+          temperature: 0.2
