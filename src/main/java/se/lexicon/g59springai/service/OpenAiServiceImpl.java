@@ -10,6 +10,7 @@ import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.ai.openai.OpenAiChatModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
 import se.lexicon.g59springai.dto.TravelGuideResponse;
 import se.lexicon.g59springai.dto.TravelParmeters;
 
@@ -104,7 +105,6 @@ public class OpenAiServiceImpl implements OpenAIService {
                 : "Sorry, I couldn't generate a response at the moment.";
 
     }
-
 
     @Override
     public String generateTravelGuideNew(TravelParmeters params) {
@@ -221,5 +221,11 @@ public class OpenAiServiceImpl implements OpenAIService {
         return converter.convert(content);
     }
 
-
+    @Override
+    public Flux<String> processSimpleStreamChatQuery(String query) {
+        if (query == null || query.trim().isEmpty()) {
+            throw new IllegalArgumentException("Query cannot be null or empty");
+        }
+        return openAiChatModel.stream(query);
+    }
 }
