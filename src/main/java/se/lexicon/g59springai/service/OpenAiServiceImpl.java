@@ -146,7 +146,7 @@ public class OpenAiServiceImpl implements OpenAIService {
                 .options(ChatOptions.builder()
                         .model("gpt-4o")
                         .maxTokens(1500)
-                        .temperature(0.4))
+                        .temperature(0.4).build())
                 .call()
                 .chatResponse();
 
@@ -206,7 +206,7 @@ public class OpenAiServiceImpl implements OpenAIService {
                 .options(ChatOptions.builder()
                         .model("gpt-4o")
                         .maxTokens(1500)
-                        .temperature(0.4))
+                        .temperature(0.4).build())
                 .call()
                 .chatResponse();
 
