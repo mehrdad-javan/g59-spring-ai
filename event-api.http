@@ -1,0 +1,33 @@
+@id = c24327c0-7908-4ad6-93fd-abb155bac43e
+@participant-email1 = participant1@example.com
+@participant-email2 = participant2@example.com
+
+### Create a new event
+POST http://localhost:8080/api/v1/events
+Content-Type: application/json
+
+{
+  "name": "Sample Event",
+  "description": "This is a sample event description",
+  "dateTime": "2026-12-25T10:00:00",
+  "location": "Conference Room A"
+}
+
+### Get ALL Events
+GET http://localhost:8080/api/v1/events
+
+
+### Get an Event by ID
+GET http://localhost:8080/api/v1/events/{{id}}
+
+
+### Delete an Event by ID
+DELETE http://localhost:8080/api/v1/events/{{id}}
+
+
+### Add Participant To Event
+POST http://localhost:8080/api/v1/events/{{id}}/participants?email={{participant-email1}}
+
+
+### Remove Participant From Event
+DELETE http://localhost:8080/api/v1/events/{{id}}/participants?email={{participant-email1}}
